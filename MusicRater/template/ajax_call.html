@@ -1,0 +1,66 @@
+
+<!DOCTYPE>
+{% load static %}
+<html>
+<head>
+<script src="{% static "js/jquery-2.2.0.min.js" %}"></script>
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/script-music.js" %}"></script>
+</head>
+<body>
+ <div class="col-sm-9 col-md-10 col-lg-12 main" id = "main-content">
+          
+          <!--toggle sidebar button-->
+          <p class="visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
+          </p>
+          <div id="left-aside">
+      <!-- <h1 class="page-header" style="color:#fff">
+            Dashboard
+            <p class="lead" style="color:#6666ff">Top 3 Songs </p>
+          </h1> -->
+        </div>
+          <div class="row placeholders">
+            {% for musicObjects in top3rated %}
+                
+              <div class="col-xs-6 col-sm-3 col-lg-4 placeholder text-center">
+                <a href = "#" > <img id = "images-thumb" src="{{MEDIA_URL}}{{musicObjects.artist_img}}" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail" style = "width:200px ;height:200px" ></a>
+                <h4>{{musicObjects.title}}</h4>
+                <span class="text-muted">{{musicObjects.song_type}}</span>
+              </div>
+                
+             {%endfor%}
+            
+          </div>
+          
+          <hr>
+
+          <h2 id = "songList" class="sub-header">Songs List</h2><hr>
+          <div class="table-responsive">
+            {% for musicObjects in musicRecords %}
+            {% if musicObjects.song_type == selectedSongType %}
+
+            <div class="col-lg-10" id= "rnd-image">
+                    <div id="imgh5" class="col-lg-2">
+                        <img src="{{MEDIA_URL}}{{musicObjects.album_cover}}">
+                        <h5 id = "ajax-artist-header">{{musicObjects.author_Detail}}</h5>
+                    </div>
+                    <div class="col-lg-8">
+                        <h2>{{musicObjects.title}}</h2>
+                        <div id="type-year-genre">
+                            <h6 class="col-lg-4">Rating:{{musicObjects.rating}}&nbsp;
+                                <i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></h6>
+                            <h6 class="col-lg-4">Type: {{musicObjects.song_type}}</h6>
+                            <h6 class="col-lg-4">Year: {{musicObjects.date|date:"Y"}}</h6>
+                        </div>
+
+                    </div>
+                </div>
+                <hr>
+                {%endif%}
+              {%endfor%}
+            </div>
+          </div>
+</body>
+</html>

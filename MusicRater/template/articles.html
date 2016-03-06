@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+  {% block content %}
+  <h1 style = "color : #ffffff">  Top {{num_of_objects}} List </h1>
+    <h5 style = "color : #D9D9D3 " > {{random_object.date|date:"l , F , d , Y"}} | <span style = "color : #D9D9D3 " > {{random_object.author_Detail}}</span> </h5>
+      {{slide_object}}
+               <div class = "col-lg-10">
+                <a href = "{{random_object.id}}"><img id = "randomImage" src = "{{random_object.m_image.url}}" width ="800" height = "300" alt = "{{random_object.title}}"></a>
+                <span>
+                 <div id = "randombody">
+                   <br> <p>{{random_object.body|slice:":400"}}</p>
+                 </div> 
+               </span>
+                 <!--  <img  class= "img-responsive" src = "http://www.fella-werke.de/media/images/News_765x350px.jpg" alt = "news"><br><br> -->
+               </div>
+      {% for news in models %}
+          
+              <div class = "col-lg-10">
+                  <div class = "col-lg-1">
+                    <br> <div id = "num-img-circle"><span style = "color:#000000"> <h1 class = "counterHeader">{{forloop.counter}}</h1> </span></div>
+                   </div>
+                   <div class = "col-lg-9"><br>
+                         <a href = "{{news.id}}" >{{news.title}}</a> <h5><small>{{news.date}}</small></h5>
+                         <p>{{news.body|slice:":100"}}...<span style = "color : purple" > <a href = "{{news.id}}"> Call to Action</a><br><br></span></p>     
+                  </div>
+              </div>
+            <br>
+         
+      {% endfor %}
+      
+  {%endblock%}
+       
+  
+  
+ 
+  

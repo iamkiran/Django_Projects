@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+   <title> {{ title }}</title>
+<h1 >Article</h1>
+{% block content %}
+        <h1 style= "color: #cce5ff">    {{ listing.title }} </h1>
+        <h5 style = "color:#ffffff"> {{listing.date|date:"l , F , d , Y"}} | <span style = "color : #ffffff " > {{listing.author_Detail}}</span> </h5>
+           <img id = "detailImage" src = "{{listing.m_image.url}}" style="width: 100%; alt = "{{listing.title}}"></a>
+          <div  id = "listingArticle" class = "col-lg-8">
+            <br><div id = "listing-paragraph">
+                <p color : "blue" >{{listing.body}}</p>
+            </div>
+        </div><br>
+        <div id = "listingbody" class = "col-lg-3" >
+               <br><img  id = "secondaryImage" src = "{{listing.s_Image.url}}"  width ="250" height = "230"  margin-top = "70" alt = "{{listing.title}}"  margin-top ="72">
+        </div>
+        
+
+
+{%endblock%}
+
+
+  

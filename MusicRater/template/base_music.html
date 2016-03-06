@@ -1,0 +1,135 @@
+<!DOCTYPE>
+{% load static %}
+
+<html>
+
+<head>
+  <title>Rating Music</title>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}" >
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" >
+    <link rel="stylesheet"href="{% static "css/boo.css" %}" >
+    <link rel="stylesheet"href="{% static "css/bootstrap-theme.css" %}" >
+    <script src="{% static "js/jquery-2.2.0.min.js" %}"></script>
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/script-music.js" %}"></script>
+    
+   
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Songs</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right"> 
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+          
+        </div>
+      </div>
+</nav>
+
+<div class = "container">
+<div class="container-fluid">
+      
+      <div class="row row-offcanvas row-offcanvas-left">
+        
+         <div class="col-sm-3 col-md-2  col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation">
+           
+            <ul class="nav nav-sidebar" id="left-aside">
+               <li class="active" style="background-color:#bebebe"><a onclick="goHome()">Overview</a></li>
+               {% for type in song_list %}
+                  <li id = songs{{type.0}} ><a  href="javascript:void(0);" >{{type.0}}</a></li>
+               {% endfor %}
+            </ul>
+
+        </div><!--/span-->
+        
+        <div class="col-sm-9 col-md-10 col-lg-10 main" id = "main-content">
+          
+          <!--toggle sidebar button-->
+          <p class="visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
+          </p>
+          <div id="left-aside">
+		  <h1 class="page-header" style="color:#fff">
+            Dashboard
+            <p class="lead" style="color:#6666ff">Top 3 Songs </p>
+          </h1>
+        </div>
+          <div class="row placeholders">
+            {% for musicObjects in top3rated %}
+                
+              <div class="col-xs-6 col-sm-3 col-lg-4 placeholder text-center">
+                <a href = "#" > <img id = "images-thumb" src="{{MEDIA_URL}}{{musicObjects.artist_img}}" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail" style = "width:200px ;height:200px" ></a>
+                <h4>{{musicObjects.title}}</h4>
+                <span class="text-muted">{{musicObjects.song_type}}</span>
+              </div>
+                
+             {%endfor%}
+            
+          </div>
+          
+          <hr>
+
+          <h2 class="sub-header">Songs List</h2>
+          <div class="table-responsive">
+            {% for musicObjects in musicRecords %}
+            <div class="col-lg-10" id= "rnd-image">
+                    <div id="imgh5" class="col-lg-2">
+                        <img width="100px" height = "140px" src="{{MEDIA_URL}}{{musicObjects.album_cover}}">
+                    </div>
+                    <div class="col-lg-8">
+                        <h2>{{musicObjects.title}}</h2>
+                        <h5>{{musicObjects.author_Detail}}</h5>
+                        <div id="type-year-genre">
+                            <h6 id = "rating" class="col-lg-4">Rating:{{musicObjects.rating}}&nbsp;
+                                <i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></h6>
+                            <h6 class="col-lg-4">Type: {{musicObjects.song_type}}</h6>
+                            <h6 class="col-lg-4">Year: {{musicObjects.date|date:"Y"}}</h6>
+                            <!--<h6 class="col-lg-3">Genre</h6>-->
+                        </div>
+
+                    </div>
+                </div>
+              {%endfor%}
+            </div>
+          </div>
+            
+
+      
+          
+      </div><!--/row-->
+	</div>
+	
+</div><!--/.container-->
+
+<footer>
+  <p class="pull-right">©2016 Company</p>
+  <!-- <div id = "loading-image">
+    <img src = "https://graphiclineweb.files.wordpress.com/2013/10/ajaxloader.gif?w=604" alt = "loading"/>
+  </div> -->
+
+</footer>
+        
+
+
+</body>
+
+
+</html>

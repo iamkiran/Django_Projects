@@ -1,0 +1,60 @@
+/* Carousel Control
+.control-box {
+    text-align: right;
+    width: 100%;
+    }*/
+body,
+html{
+    min-height: 100%;
+}
+
+
+#mainArti{
+
+    border-radius: 2px;
+}
+#What_next{
+
+    background: #b8c1ff;
+    opacity: 0.5;
+    color: black !important;
+    font-size: 24px;
+    border-radius: 20px;
+}
+.carousel-control{
+        color: #000 !important;
+        border: 0px;
+        border-radius: 0px;
+        display: inline-block;
+        font-size: 24px;
+        font-weight: 200;
+        line-height: 18px;
+        opacity: 0.9;
+        padding: 4px 0px 0px;
+        position: absolute;
+        height: 30px;
+        width: 15px;
+        top: 0;
+        background: none !important;
+        }
+
+
+.carousel-caption{
+    font-size: 10px !important;
+}
+.thumbnail{
+
+
+}
+#whatnext{
+    color: black;
+    border: double;
+}
+body{
+    background-color: #77773c;
+    background-image: url("../backimages/Background.jpg");
+    background-size: cover;
+}
+#foot{
+    height: 200px;
+}
