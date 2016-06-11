@@ -15,7 +15,7 @@ class Music(models.Model):
     author_Detail = models.CharField("Artist" , max_length = 256)
     date = models.DateTimeField("Released Date")
     artist_img = models.ImageField("Artist Profile", upload_to = artistIcon ,)
-    album_cover = models.ImageField("Album Cover",   upload_to = songsAlbum ,)             #next step store m_image and s_iamge i a seperate folder
+    album_cover = models.ImageField("Album Cover",   upload_to = songsAlbum ,)             #next step store m_image and s_iamge i a separate folder
       
 
     RATING_CHOICES = (
